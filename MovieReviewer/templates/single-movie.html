@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles/single.css' %}">
+{% endblock %}
+
+{% block content %}
+<p class="h1">{{movie.title}}</p>
+<p class="h3">Director: {{movie.director}}</p>
+<p class="h3">Publisher: {{movie.publisher}}</p>
+<p class="h5">Release year: {{movie.year}}</p>
+<p class="h5">Rating: {{movie.rating}}/10</p>
+<p class="h5">
+    Countries:
+    {% for country in movie.countries.all %}
+    {{country}} 
+    {% endfor %}
+</p>
+
+<p class="h5" id="des">Short description:</p>
+<p>{{movie.description}}</p>
+<a href="{% url 'movieList' %}">Go back to movies</a>
+{% endblock %}

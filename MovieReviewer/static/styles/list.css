@@ -1,0 +1,54 @@
+.add {
+    background-color: #32de84;
+    border: 3px solid #32de84;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    color: white;
+}
+
+.add:hover {
+    opacity: 0.8;
+}
+
+.view {
+    background-color: #FFC72C;
+    border: 3px solid #FFC72C;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    color: white;
+    margin-right: 5px;
+}
+
+.view:hover {
+    opacity: 0.8;
+}
+
+.update {
+    background-color: purple;
+    border: 3px solid purple;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    color: white;
+}
+
+.update:hover {
+    opacity: 0.8;
+}
+
+.delete {
+    background-color: red;
+    border: 3px solid red;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    color: white;
+    margin-left: 5px;
+}
+
+.delete:hover {
+    opacity: 0.8;
+}
+

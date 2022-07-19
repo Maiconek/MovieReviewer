@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/form.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div id = "create-form">
+    <h1 class="display-5">Add/Edit an actor</h1>
+    <form action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.first_name|as_crispy_field}}
+        {{form.last_name|as_crispy_field}}
+       <div class="row g-2">
+            <div class="col-md">
+                {{form.born|as_crispy_field}}
+            </div>
+            <div class="col-md">
+                {{form.nationality|as_crispy_field}}
+            </div>
+            <div class="col-md">
+                {{form.movies|as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success btn-block btn-lg">SUBMIT</button>
+            </div>
+            <div class="col-md-3">
+                <a href="{% url 'actors' %}" class="btn btn-danger btn-block btn-lg">CANCEL</a>
+            </div>
+        </div>
+    </form>    
+</div>
+
+{% endblock %}

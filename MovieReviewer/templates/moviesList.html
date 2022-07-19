@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles/list.css' %}">
+{% endblock %}
+
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+          <th scope="col">Movie</th>
+          <th scope="col">Director</th>
+          <th scope="col">Publisher</th>
+          <th scope="col">Year</th>
+          <th scope="col">Rating</th>
+          <th scope="col"><a href="{% url 'create' %}"><button class="add">Add</button></a></th>
+        </tr>
+      </thead>
+    <tbody>
+        {% for movi in movies %}
+        <tr>
+          <td>{{movi.title}}</td></a>
+          <td>{{movi.director}}</td>
+          <td>{{movi.publisher}}</td>
+          <td>{{movi.year}}</td>
+          <td>{{movi.rating}}/10</td>
+          <td><a href="{% url 'single-movie' movi.id %}"><button class="view">View</button></a>
+              <a href="{% url 'update' movi.id %}"><button class="update">Update</button></a>
+              <a href="{% url 'delete' movi.id %}">
+              <button type="button" class="delete" 
+              onclick="return confirm('Are you sure you want to delete {{movi.title}}?')">Delete</button></a>
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

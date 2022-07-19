@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles/list.css' %}">
+{% endblock %}
+
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+          <th scope="col">Tag Name</th>
+          <th scope="col"><a href="{% url 'create-tag' %}"><button class="add" style="margin-left: 700px;">Add</button></a></th>
+        </tr>
+      </thead>
+    <tbody>
+        {% for tag in tags %}
+        <tr>
+          <td>{{tag}}</td>
+          <td><a href="{% url 'update-tag' tag.id %}"><button class="update" style="margin-left:700px;">Update</button></a>
+              <a href="{% url 'delete-tag' tag.id %}">
+              <button type="button" class="delete" 
+              onclick="return confirm('Are you sure you want to delete {{tag.name}}?')">Delete</button></a>
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

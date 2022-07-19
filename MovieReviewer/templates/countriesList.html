@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles/list.css' %}">
+{% endblock %}
+
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+          <th scope="col">Country</th>
+          <th scope="col"><a href="{% url 'create-country' %}"><button class="add" style="margin-left: 650px;">Add</button></a></th>
+        </tr>
+      </thead>
+    <tbody>
+        {% for country in countries %}
+        <tr>
+          <td>{{country}}</td>
+          <td><a href="{% url 'update-country' country.id %}"><button class="update" style="margin-left:650px;">Update</button></a>
+              <a href="{% url 'delete-country' country.id %}">
+              <button type="button" class="delete" 
+              onclick="return confirm('Are you sure you want to delete {{country}}?')">Delete</button></a>
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

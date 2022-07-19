@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles/single.css' %}">
+{% endblock %}
+
+{% block content %}
+<p class="h1">{{actor.first_name}} {{actor.last_name}}</p>
+<p class="h3">Born: {{actor.born}}</p>
+<p class="h3">Nationality: {{actor.nationality}}</p>
+<p class="h5">
+    Movies:
+    {% for movie in actor.movies.all %}
+    {{movie}}, 
+    {% endfor %}
+</p>
+
+<a href="{% url 'actors' %}">Go back to actors</a>
+{% endblock %}
